@@ -1,0 +1,91 @@
+<% layout("/layouts/boilerplate") %>
+
+    <div class="row">
+        <div class="col-8 offset-2">
+            <br><br>
+            <h3>Create new Listing</h3>
+            <form action="/listings" method="post" class="needs-validation" novalidate enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title*</label>
+                    <input id="title" name="listing[title]" placeholder="e.g: Modern Loft in Downtown"
+                        class="form-control" required>
+                    <div class="valid-feedback">Title looks good!</div>
+                    <div class="invalid-feedback">Please provide a title.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description*</label>
+                    <textarea id="description" name="listing[description]"
+                        placeholder="e.g: Stay in the heart of the city in this stylish loft apartment. Perfect for urban explorers!"
+                        rows="3" cols="20" class="form-control" required></textarea>
+                    <div class="valid-feedback">Description looks good!</div>
+                    <div class="invalid-feedback">Please provide a description.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="img" class="form-label">Upload Image*</label>
+                    <input id="img" name="listing[img]" placeholder="Enter img URL/Link" class="form-control"
+                        type="file">
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-md-4">
+                        <label for="price" class="form-label">Price*</label>
+                        <input id="price" name="listing[price]" placeholder="1500" type="number" class="form-control"
+                            required>
+                        <div class="valid-feedback">Price looks good!</div>
+                        <div class="invalid-feedback">Should be at least &#8377;500</div>
+                    </div>
+                    <div class="mb-3 col-md-8">
+                        <label for="country" class="form-label">Country*</label>
+                        <input id="country" name="listing[country]" placeholder="India" class="form-control" required>
+                        <div class="valid-feedback">Yah!</div>
+                        <div class="invalid-feedback">Please provide a country.</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location*</label>
+                    <input id="location" name="listing[location]" placeholder="Jaipur, Rajasthan" class="form-control"
+                        required>
+                    <div class="valid-feedback">Yah!</div>
+                    <div class="invalid-feedback">Please provide a location.</div>
+                </div>
+                <div >
+                    <p>Select Category</p>
+                    <input type="checkbox" class="btn-check" id="btn-check-1" value="TRENDING" autocomplete="off" name="listing[category]">
+                    <label class="btn mb-1" for="btn-check-1">Trending <i
+                            class="fa-solid fa-fire-flame-curved"></i></label>
+
+                    <input type="checkbox" class="btn-check" id="btn-check-2" value="ROOMS" autocomplete="off" name="listing[category]">
+                    <label class="btn mb-1" for="btn-check-2">Rooms <i class="fa-solid fa-bed"></i></label>
+
+                    <input type="checkbox" class="btn-check" id="btn-check-3" value="AMAZING VIEWS" autocomplete="off" name="listing[category]">
+                    <label class="btn mb-1" for="btn-check-3">Amazing Views <i
+                            class="fa-solid fa-wand-sparkles"></i></label>
+
+                    <input type="checkbox" class="btn-check" id="btn-check-4" value="ICONIC CITIES" autocomplete="off" name="listing[category]">
+                    <label class="btn mb-1" for="btn-check-4">Iconic Cities <i
+                            class="fa-solid fa-mountain-city"></i></label>
+
+                    <input type="checkbox" class="btn-check" id="btn-check-5" value="CASTLES" autocomplete="off" name="listing[category]">
+                    <label class="btn mb-1" for="btn-check-5">Castles <i
+                            class="fa-solid fa-fire-flame-curved"></i></label>
+
+                    <input type="checkbox" class="btn-check" id="btn-check-6" value="AMAZING POOLS" autocomplete="off" name="listing[category]">
+                    <label class="btn mb-1" for="btn-check-6">Amazing Pools <i
+                            class="fa-solid fa-person-swimming"></i></label>
+
+                    <input type="checkbox" class="btn-check" id="btn-check-7" value="CAMPING" autocomplete="off" name="listing[category]">
+                    <label class="btn mb-1" for="btn-check-7">Camping <i class="fa-solid fa-campground"></i></label>
+
+                    <input type="checkbox" class="btn-check" id="btn-check-8" value="FARMS" autocomplete="off" name="listing[category]">
+                    <label class="btn mb-1" for="btn-check-8">Farms <i class="fa-solid fa-tractor"></i></label>
+
+                    <input type="checkbox" class="btn-check" id="btn-check-9" value="ARCTIC" autocomplete="off" name="listing[category]">
+                    <label class="btn mb-1" for="btn-check-9">Arctic <i class="fa-solid fa-snowflake"></i></label>
+                </div>
+
+                <p>(*) Required field</p>
+                <button type="submit" class="btn btn-outline-danger">Add</button>
+            </form>
+            <br><br>
+        </div>
+    </div>
