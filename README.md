@@ -19,6 +19,10 @@ A small Airbnb-like web app (Express + EJS + MongoDB) used as a learning project
 - `routes/` and `controller/` — route handlers and controllers
 - `init/data.js` — example sample listings data
 
+## Install
+
+Deployed link: https://major-project-gx8l.onrender.com/listings
+
 ## Requirements
 
 - Node.js 14+ (tested with Node 18+)
