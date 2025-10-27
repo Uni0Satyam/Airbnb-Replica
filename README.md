@@ -118,12 +118,3 @@ Small project — feel free to open PRs for fixes or small features.
 ## License
 
 This project is provided as-is for learning and demo purposes.
-
----
-
-If you want, I can:
-- Add the `init/seed.js` seeder file automatically and run it for you.
-- Convert `init/data.js` to pure JSON (no `ObjectId(...)`) to make it easier to import with `mongoimport` or `insertMany`.
-- Add an npm `start` script to `package.json` (e.g., `"start": "node app.js"`).
-
-Tell me which follow-up you'd like and I'll apply it.
