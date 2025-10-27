@@ -28,5 +28,4 @@ router.route("/:id")
     .delete(isLoggedIn, isOwner, wrapAsync(listingController.delete))
 
 
-
 module.exports = router;

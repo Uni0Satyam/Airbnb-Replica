@@ -3,12 +3,26 @@ const mapApiKey = process.env.MAP_API_KEY;
 const Listing = require("../models/listing");
 
 module.exports.index = async (req, res) => {
-    const allListings = await Listing.find({});
+  try {
+    const { category } = req.query;
+
+    let allListings;
+    if (category) {
+      allListings = await Listing.find({ category });
+    } else {
+      allListings = await Listing.find({});
+    }
+
     res.render("listings/index.ejs", { allListings });
+  } catch (err) {
+    console.error("Error filtering listings:", err);
+    req.flash("error", "Unable to load listings.");
+    res.redirect("/listings");
+  }
 };
 
 module.exports.new = (req, res) => {
-    res.render("listings/new.ejs");
+  res.render("listings/new.ejs");
 };
 
 module.exports.createListing = async (req, res, next) => {
@@ -54,54 +68,54 @@ module.exports.createListing = async (req, res, next) => {
 
 
 module.exports.show = async (req, res) => {
-    let { id } = req.params;
-    const listing = await Listing.findById(id).populate({path: "reviews", populate: {path: "author"}}).populate("owner");
-    if(!listing){
-        req.flash("error","Listing not found");
-        return res.redirect("/listings");
-    }
-    res.render("listings/show.ejs", { listing });
+  let { id } = req.params;
+  const listing = await Listing.findById(id).populate({ path: "reviews", populate: { path: "author" } }).populate("owner");
+  if (!listing) {
+    req.flash("error", "Listing not found");
+    return res.redirect("/listings");
+  }
+  res.render("listings/show.ejs", { listing });
 };
 
 module.exports.renderEditPage = async (req, res) => {
-    let { id } = req.params;
-    const listing = await Listing.findById(id);
-    if(!listing){
-        req.flash("error","Listing not found");
-        return res.redirect("/listings");
-    }
+  let { id } = req.params;
+  const listing = await Listing.findById(id);
+  if (!listing) {
+    req.flash("error", "Listing not found");
+    return res.redirect("/listings");
+  }
 
-    let originalImageUrl = listing.image.url;
-    originalImageUrl = originalImageUrl.replace("/upload","/upload/w_250");
-    res.render("listings/edit.ejs", { listing, originalImageUrl });
+  let originalImageUrl = listing.image.url;
+  originalImageUrl = originalImageUrl.replace("/upload", "/upload/w_250");
+  res.render("listings/edit.ejs", { listing, originalImageUrl });
 };
 
 module.exports.edit = async (req, res) => {
-    let { id } = req.params;
-    
-    let listing = await Listing.findById(id);
-    
-    if(!listing.owner._id.equals(res.locals.currUser._id)){
-        req.flash("error", "You don't have permission to edit the post");
-        res.redirect(`/listings/${id}`);
-    }
-    
-    await Listing.findByIdAndUpdate(id, { ...req.body.listing }, { new: true, runValidators: true });
+  let { id } = req.params;
 
-    if(typeof req.file != "undefined"){
-        let url = req.file.path;
-        let filename = req.file.filename;
-        listing.image = {url,filename};
-        await listing.save();
-    }
+  let listing = await Listing.findById(id);
 
-    req.flash("success", "Listing updated!");
+  if (!listing.owner._id.equals(res.locals.currUser._id)) {
+    req.flash("error", "You don't have permission to edit the post");
     res.redirect(`/listings/${id}`);
+  }
+
+  await Listing.findByIdAndUpdate(id, { ...req.body.listing }, { new: true, runValidators: true });
+
+  if (typeof req.file != "undefined") {
+    let url = req.file.path;
+    let filename = req.file.filename;
+    listing.image = { url, filename };
+    await listing.save();
+  }
+
+  req.flash("success", "Listing updated!");
+  res.redirect(`/listings/${id}`);
 };
 
 module.exports.delete = async (req, res) => {
-    let { id } = req.params;
-    await Listing.findByIdAndDelete(id);
-    req.flash("success", "Listing deleted!")
-    res.redirect("/listings");
+  let { id } = req.params;
+  await Listing.findByIdAndDelete(id);
+  req.flash("success", "Listing deleted!")
+  res.redirect("/listings");
 };
