@@ -82,8 +82,18 @@ select:focus{
     font-size: smaller;
 }
 
-/* footer */
-.f-info-links a {
+.navbar-toggler{
+    border: none !important;
+    font-size: inherit !important;
+  }
+
+  .navbar-toggler:focus{
+    box-shadow: none !important;
+  }
+
+  
+  /* footer */
+  .f-info-links a {
     text-decoration: none;
     color: #222222;
 }
@@ -144,7 +154,7 @@ select:focus{
 
 .filterOption {
     text-align: center;
-    margin-right: 15px;
+    margin-right: 0.5rem;
     opacity: 0.7;
 }
 
@@ -179,7 +189,7 @@ select:focus{
     border: 1px solid rgba(98, 98, 98, 0.57);
     border-radius: 2rem;
     height: 3.5rem;
-    padding: 0.7rem;
+    padding: 0.5rem;
     display: flex;
     align-items: center;
 }
@@ -212,4 +222,48 @@ select:focus{
 .card-img-overlay:hover {
     opacity: 0.2;
     background-color: #fff;
+}
+@media (max-width: 766px) {
+/* Navbar */
+  .navbar{
+    height: 7rem;
+    padding-top: 0 !important;
+  }
+
+  .container-fluid{
+    height: none;
+  }
+
+  .navbar-collapse {
+    background: #fff;
+    padding: 1rem;
+  }
+  .navbar-nav .nav-link {
+    text-align: center;
+  }
+  .search-container {
+    width: 100%;
+    justify-content: center;
+    margin: 0.5rem 0;
+  }
+  form.d-flex {
+    align-items: center;
+  }
+  .nav-link{
+    padding: 0 !important;
+    margin: 0.5rem;
+  }
+  .search-container {
+    height: 3rem;
+    display: flex;
+  }
+
+  .toggle-tax{
+    display: none;
+  }
+
+  .filterOption{
+    margin-bottom: 0.5rem;
+  }
+
 }
