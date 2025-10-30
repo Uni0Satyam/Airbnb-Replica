@@ -37,13 +37,13 @@ Notes:
 ## Project structure (short)
 
 ```
-app.js
-models/
-views/
-public/
-routes/
-controller/
-init/data.js
+  app.js
+    models/
+    views/
+    public/
+    routes/
+    controller/
+    init/data.js
 ```
 
 ## License
