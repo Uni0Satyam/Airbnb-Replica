@@ -115,7 +115,11 @@ app.use("/", userRouter);
 // });
 
 app.use((req, res, next) => {
-    next(new expressError(404, "Page not found"));
+    if (req.originalUrl.startsWith("/.well-known")) {
+    return res.status(204).end(); 
+    } else{
+        next(new expressError(404, "Page not found"));
+    }
 });
 
 app.use((err, req, res, next) => {

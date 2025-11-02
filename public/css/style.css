@@ -85,45 +85,75 @@ select:focus{
 .navbar-toggler{
     border: none !important;
     font-size: inherit !important;
-  }
+}
 
-  .navbar-toggler:focus{
+.navbar-toggler:focus{
     box-shadow: none !important;
-  }
+}
 
   
-  /* footer */
-  .f-info-links a {
-    text-decoration: none;
-    color: #222222;
+/* footer */
+
+.f-info {
+    background-color: #cfcfcf;
 }
 
-.f-info-links a:hover {
-    text-decoration: underline;
+.row{
+    margin: 0 !important;
 }
 
-.f-info-links,
-.f-info-socials,
-.f-info-brand {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.f-brand{
+    font-size: 1.5rem !important;
+    color: #ff385c;
+    text-decoration: none !important;
 }
 
-.f-info-socials i {
-    font-size: 1.2rem;
+.f-margin {
+    margin-left: 2.5rem;
+}
+
+.f-logo{
     margin-right: 1rem;
 }
 
-.f-info {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    height: 8rem;
-    background-color: #cfcfcf;
-    align-items: space-evenly;
-    text-align: center;
+.fa-brands{
+    opacity: 0.7;
+    font-size: larger;
+}
+
+.fa-brands:hover{
+    opacity: 1;
+    transform: scale(1.1);
+    animation: transform 1s ease-in-out;
+    cursor: pointer;
+}
+
+.fa-square-linkedin:hover{
+    color: #0a66c2;
+}
+
+.fa-square-instagram:hover{
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.fa-square-facebook:hover{
+    color: #1877F2;
+}
+
+.no-bullets {
+  list-style-type: none;
+}
+
+.foot-link{
+    color: rgba(0, 0, 0, 0.65);
+    text-decoration: none;
+}
+
+.foot-link:hover{
+    color: rgb(0, 0, 0);
+    text-decoration: underline;
 }
 
 /* Show Page */
